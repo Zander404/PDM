@@ -6,36 +6,24 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val rollButton: Button = findViewById(R.id.roll_button)
-        val countUpButton: Button = findViewById(R.id.count_button)
+    class MainActivity : AppCompatActivity() {
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
 
-
-        rollButton.setOnClickListener { rollDice() }
-        countUpButton.setOnClickListener {countUp()}
-    }
-    private fun rollDice() {
-        val randomInt = (1..6).random()
-        val resultText: TextView = findViewById(R.id.result_text)
-
-        resultText.text = randomInt.toString()
-//        resultText.text = "Dice Rolled!"
-
-//        Toast.makeText(this, "button clicked",
-//            Toast.LENGTH_SHORT).show()
-    }
-    private fun countUp(){
-
-        val resultText: TextView = findViewById(R.id.result_text)
-        val count = resultText.text.toString().toInt() + 1
-
-        if (count <= 6 ){
-            resultText.text = count.toString()
+            setContentView(R.layout.activity_main)
+            val btLogin = findViewById<Button>(R.id.buttonFazLogin)
+            btLogin.setOnClickListener {
+                val tLogin = findViewById<TextView>(R.id.editTextLogin)
+                val tSenha = findViewById<TextView>(R.id.editTextSenha)
+                val login = tLogin.text.toString()
+                val senha = tSenha.text.toString()
+                if(login == "luann" && senha == "123") {
+                    Toast.makeText(this, "Bem vindo, login realizado com sucesso", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    Toast.makeText(this, "Login ou Senha incorretos!!", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
-
     }
-}
